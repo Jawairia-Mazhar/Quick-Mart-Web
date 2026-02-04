@@ -1,0 +1,13 @@
+@import "tailwindcss";
+a {
+  text-decoration: none;
+  transition: 0.4s;
+  border-bottom: 2px solid transparent;
+}
+
+a:hover {
+  border-bottom: 2px solid #A6A6A6;
+}
+img.blend { 
+  mix-blend-mode: multiply; 
+}
