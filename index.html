@@ -6,42 +6,150 @@
     <title>Quick Mart Web</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="">
-    <nav class="flex justify-between items-center md:p-4 bg-orange-20  shadow-[#b00020] shadow-md">
-        <img src="assets/QuickMartIcon.png" alt="Quick Mart Logo" class="w-30 h-12 md:w-38 md:h-16 ">
-        <ul class="flex space-x-4 md:space-x-8 font-lg mr-18 ">
-            <li><a href="#" class="text-gray-700 hover:text-orange-500 ">Home</a></li>
-            <li><a href="#" class="text-gray-700 hover:text-orange-500 ">Products</a></li>
-            <li><a href="#" class="text-gray-700 hover:text-orange-500 ">About Us</a></li>
-            <li><a href="#" class="text-gray-700 hover:text-orange-500 ">Contact</a></li>
-
+<body class="overflow-x-hidden">
+    <nav class="relative flex items-center justify-between md:p-4 bg-orange-20 shadow-[#b00020] shadow-md">
+        <img src="assets/QuickMartIcon.png" alt="Quick Mart Logo" class="w-30 md:w-38 h-12 md:h-16">
+        <button id="nav-toggle" class="md:hidden px-3 py-2 text-gray-700 cursor-pointer" aria-label="Toggle menu" aria-expanded="false">
+            <span class="block w-6 h-0.5 mb-1.5 bg-gray-700"></span>
+            <span class="block w-6 h-0.5 mb-1.5 bg-gray-700"></span>
+            <span class="block w-6 h-0.5 bg-gray-700"></span>
+        </button>
+        <ul id="nav-menu" class="hidden flex-col md:flex md:flex-row md:static absolute top-full left-0 right-0 space-y-2 md:space-y-0 md:space-x-8 px-4 py-3 md:p-0 font-lg bg-orange-20 md:bg-transparent">
+            <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Home</a></li>
+            <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Products</a></li>
+            <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">About Us</a></li>
+            <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Contact</a></li>
+        </ul>
     </nav>
 
-    <main class="flex md:flex-row items-center md:justify-between bg-orange-400 md:mt-1.5">
-        <div class="md:ml-13 space-y-4">
-            <h1 class="text-5xl font-bold text-orange-50">Your trusted destination for everyday essentials.</h1>
+    <main class="flex flex-col md:flex-row items-center md:justify-between mt-1.4 p-3 bg-orange-400">
+        <div class="md:ml-13 space-y-4 mt-4">
+            <h1 class="text-5xl text-orange-50 font-bold">Your trusted destination for everyday essentials.</h1>
             <h3 class="text-xl">Your one‑stop store for groceries, essentials, and everyday needs — fast, affordable, and always convenient.</h3>
-            <button class="bg-orange-50 text-black px-6 py-3 rounded-2xl hover:bg-orange-600 transition duration-300 cursor-pointer">Shop Now</button>
+            <button class="px-6 py-3 text-black bg-orange-50 hover:bg-orange-600 rounded-2xl transition duration-300 cursor-pointer">Shop Now</button>
         </div>
-        <img src="assets/coverImage.png" alt="cover page image" class="w-120 h-120 object-cover  md:mt-14 md:mr-20">
+        <img src="assets/coverImage.png" alt="cover page image" class="object-cover w-120 h-120 md:mt-14 md:mr-20">
     </main>
-    <section class="md:w-100% md:h-40 bg-amber-800 flex md:gap-12 justify-center p-5">
-        <div class="bg-yellow-100 w-42 h-22">
-            <span class="text-md font-medium p-2">Vegetables</span>
-        </div>
-        <div class="bg-yellow-100 w-42 h-22">
-            
-        </div>
-        <div class="bg-yellow-100 w-42 h-22">
-            
-        </div>
-        <div class="bg-yellow-100 w-42 h-22">
-        </div>
-        <div class="bg-yellow-100 w-42 h-22">
-            
+
+    <section class="md:w-full md:h-40 bg-amber-800">
+        <h3 class="p-2 text-xl text-white">Featured Categories</h3>
+        <div class="grid grid-cols-3 md:grid-cols-5 justify-center p-2 md:p-5 gap-2 md:gap-12">
+            <div class="w-35 md:w-42 h-22 bg-yellow-100 rounded-xl">
+                <span class="p-2 text-md font-medium">Vegetables</span>
+                <!-- <img
+                  src="https://picsum.photos/300/300" alt=""
+                  class="
+                    md:w-30 md:h-30
+                    md:ml-2
+                  "
+                  "
+                > -->
+            </div>
+            <div class="w-35 md:w-42 h-22 bg-yellow-100 rounded-xl">
+                <span class="p-2 text-md font-medium">Fruits</span>
+                <!-- <img
+                  src="assets/fruits (2).png" alt="Fruits"
+                  class="
+                    md:w-30 md:h-30
+                    md:ml-2
+                  "
+                > -->
+            </div>
+            <div class="w-35 md:w-42 h-22 bg-yellow-100 rounded-xl">
+                <span class="p-2 text-md font-medium">Snacks and Bread</span>
+                <!-- <img
+                  src="assets/bread.png" alt="Bread"
+                  class="
+                    md:w-30 md:h-20
+                    md:ml-2
+                    md:place-items-end
+                  "
+                > -->
+            </div>
+            <div class="w-35 md:w-42 h-22 bg-yellow-100 rounded-xl">
+                <span class="p-2 text-md font-medium">Meat</span>
+                <!-- <img
+                  src="assets/fish.png" alt="Meat"
+                  class="
+                    md:w-30 md:h-16
+                    md:ml-2
+                  "
+                > -->
+            </div>
+            <div class="w-35 md:w-42 h-22 bg-yellow-100 rounded-xl">
+                <span class="p-2 text-md font-medium">Milk and Dairy</span>
+                <!-- <img
+                  src="assets/milk-dairy.png" alt="Milk and Dairy"
+                  class="
+                    md:ml-2
+                  "
+                > -->
+            </div>
+
         </div>
     </section>
 
-    <script src="script.js"></script>
+<!-- Promotional images section -->
+    <section>
+        <div class="flex flex-col md:flex-row md:mt-2 gap-2">
+            <div class="w-full md:w-1/2">
+                <img src="https://picsum.photos/300/100" alt="Promotional Image 1" class="object-cover w-full h-64 md:h-auto">
+            </div>
+            <div class="w-full md:w-1/2">
+                <img src="https://picsum.photos/300/100" alt="Promotional Image 2" class="object-cover w-full h-64 md:h-auto">
+            </div>
+        </div>
+    </section>  
+
+<!-- Best Selling Products section  -->
+    <section>
+        <h3 class="md:p-2 text-xl text-gray-700">Best Selling Products</h3>
+        <div id="products-container" class="grid grid-cols-2 md:grid-cols-6 justify-center md:p-5 gap-x-6 md:gap-12">
+            <!-- Product cards will be generated here -->
+        </div>
+    </section>
+
+<!-- About Us section  -->
+    <section class="py-12 px-4 md:px-8 bg-amber-300">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <!-- Image -->
+        <div class="md:w-1/2">
+          <img src="./assets/about.png" alt="Quick Mart - Quality Groceries" class="rounded-lg w-[90%]">
+        </div>
+        
+        <!-- Text Content -->
+        <div class="md:w-1/2 space-y-4">
+              <h2 class="max-w-6xl text-4xl font-bold text-white mb-6 text-left">About Quick Mart</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    At Quick Mart, we believe that quality groceries should be accessible, affordable, and convenient for everyone. Founded with a mission to transform the way families shop for everyday essentials, we've grown into your trusted neighborhood source for fresh produce, quality meats, dairy products, and pantry staples.
+                </p>
+                
+                <p class="text-gray-700 leading-relaxed">
+                    Every product we stock is carefully selected to meet our high standards for freshness and quality. From farm-fresh vegetables and fruits to premium meats and essential groceries, we're committed to bringing you the best selection at competitive prices.
+                </p>
+                
+                <p class="text-gray-700 leading-relaxed">
+                    Our fast, friendly service and convenient shopping experience mean you can focus on what matters most—your family and home. Whether you're shopping for a quick meal or stocking your pantry, Quick Mart is here to make your life easier, one shopping trip at a time.
+                </p>
+                
+                <div class="pt-4">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Why Choose Quick Mart?</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center"><span class="text-orange-500 font-bold mr-2">✓</span> Fresh Quality Products</li>
+                        <li class="flex items-center"><span class="text-orange-500 font-bold mr-2">✓</span> Competitive Pricing</li>
+                        <li class="flex items-center"><span class="text-orange-500 font-bold mr-2">✓</span> Fast & Convenient Shopping</li>
+                        <li class="flex items-center"><span class="text-orange-500 font-bold mr-2">✓</span> Friendly, Helpful Staff</li>
+                    </ul>
+                </div>
+          </div>
+            
+        </div>
+      </section>  
+
+    <section class="w-full h-35 bg-[#b00020]">
+      
+    </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
