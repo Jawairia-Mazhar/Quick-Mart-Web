@@ -11,3 +11,7 @@ a:hover {
 img.blend { 
   mix-blend-mode: multiply; 
 }
+
+.icon-amber {
+  filter: brightness(0) saturate(100%) invert(65%) sepia(68%) saturate(1250%) hue-rotate(5deg) brightness(104%);
+}
