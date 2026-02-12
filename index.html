@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="overflow-x-hidden">
-    <nav class="relative flex items-center justify-between md:p-4 bg-orange-20 shadow-[#b00020] shadow-md">
+<nav class="flex items-center justify-between md:p-4 bg-orange-20 shadow-[#b00020] shadow-md">
         <img src="assets/QuickMartIcon.png" alt="Quick Mart Logo" class="w-30 md:w-38 h-12 md:h-16">
-        <button id="nav-toggle" class="md:hidden px-3 py-2 text-gray-700 cursor-pointer" aria-label="Toggle menu" aria-expanded="false">
+          <button id="nav-toggle" class="toggle-btn flex flex-col md:hidden px-3 py-2 text-gray-700 cursor-pointer" aria-label="Toggle menu" aria-expanded="false">
             <span class="block w-6 h-0.5 mb-1.5 bg-gray-700"></span>
             <span class="block w-6 h-0.5 mb-1.5 bg-gray-700"></span>
             <span class="block w-6 h-0.5 bg-gray-700"></span>
         </button>
-        <ul id="nav-menu" class="hidden flex-col md:flex md:flex-row md:static absolute top-full left-0 right-0 space-y-2 md:space-y-0 md:space-x-8 px-4 py-3 md:p-0 font-lg bg-orange-20 md:bg-transparent">
+        <ul id="nav-menu" 
+            class="hidden top-full left-0 right-0 space-y-2 px-4 py-3 font-lg bg-orange-20 
+              md:flex md:flex-row md:static  md:space-y-0 md:space-x-8 md:p-0 md:bg-transparent">
             <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Home</a></li>
             <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Products</a></li>
             <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">About Us</a></li>

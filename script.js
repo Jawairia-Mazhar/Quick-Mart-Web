@@ -65,3 +65,30 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts('#products-container', mostBoughtProducts);
     renderCategories('#categories-container', featuredCategories);
 })
+
+const togBtn = document.getElementById('nav-toggle')
+const navMenu = document.getElementById('nav-menu')
+
+// upon clicking the toggle button create a div having the ul list items of the menu. floating on the right side of the screen. The div should have a close button to hide the menu when clicked.
+togBtn.addEventListener('click', () => {
+    const toggleMenu = document.createElement('div');
+    toggleMenu.className = 
+    'absolute right-4 top-2 bg-white w-56 min-h-screen overflow-y-auto transition-transform transform ease-in-out duration-300';
+    toggleMenu.innerHTML = `
+        <button id="close-menu" class="toggle-btn flex flex-col md:hidden px-3 py-2 cursor-pointer" aria-label="Close menu" aria-expanded="true">
+            <img src="assets/close.png" alt="Close Menu" class=" w-5 h-5">
+        </button>
+        <ul class="flex flex-col gap-4 p-4 ">
+            <li><a href="#" class="text-black hover:text-orange-500 hover:font-semibold">Home</a></li>
+            <li><a href="#" class="text-black hover:text-orange-500 hover:font-semibold">Products</a></li>
+            <li><a href="#" class="text-black hover:text-orange-500 hover:font-semibold">Categories</a></li>
+        </ul>
+    `;    
+    document.body.appendChild(toggleMenu);
+
+    const closeBtn = toggleMenu.querySelector('#close-menu');
+    closeBtn.addEventListener('click', () => {
+        toggleMenu.remove();
+        toggleMenu = null;
+    });
+});
