@@ -17,14 +17,17 @@ const featuredCategories = [
 
 function createProductCard(product) {
     const productCard = document.createElement('div');
-    productCard.className = 'w-50 h-48 rounded-2xl flex flex-col bg-yellow-100 gap-1 items-left p-2 hover:shadow-lg transition duration-300 cursor-pointer text-center';
+    productCard.className = 'w-50 h-53 rounded-2xl flex flex-col bg-yellow-100 gap-1 items-left p-2 hover:shadow-lg transition duration-300 text-center rounded-bl-4xl rounded-br-4xl';
     productCard.innerHTML = `
-        <div class="w-full h-24 bg-white rounded-2xl flex items-center justify-center">
+        <div class="w-full md:h-24 bg-white rounded-2xl flex items-center justify-center">
             <img src="${product.image}" alt="${product.name}" class="h-24 object-contain">
         </div>
         <span class="text-md font-medium">${product.name}</span>
         <span class="text-xs">Fresh ${product.name} | ${product.quantity}</span>
-        <span class="text-sm font-medium mt-2">Rs. ${product.price}</span>
+        <span class="text-sm font-medium">Rs. ${product.price}</span>
+        <div class="flex-1 place-items-end mr-[5%] mt-0">
+            <img src="assets/add-to-cart.png" alt="Add to Cart" class="w-8 h-8 cursor-pointer items-end self-end mr-[8%] rounded-xl">
+        </div>
     `;
     return productCard;
 }
@@ -68,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const togBtn = document.getElementById('nav-toggle')
 const navMenu = document.getElementById('nav-menu')
+
+let toggleMenu = null; // store menu reference
 
 // upon clicking the toggle button create a div having the ul list items of the menu. floating on the right side of the screen. The div should have a close button to hide the menu when clicked.
 togBtn.addEventListener('click', () => {
