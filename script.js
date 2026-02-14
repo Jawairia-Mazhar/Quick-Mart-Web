@@ -45,7 +45,6 @@ function renderProducts(containerSelector, productsArray) {
     });
 }
 
-
 function createCategoryCard(category) {
     const categoryCard = document.createElement('div');
     categoryCard.className = "w-35 md:w-42 h-22 bg-yellow-100 rounded-xl";
@@ -64,9 +63,20 @@ function renderCategories(containerSelector, categoriesArray) {
         container.appendChild(categoryCard);
     })
 }
+
+/* product cards scrolling */
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts('#products-container', mostBoughtProducts);
     renderCategories('#categories-container', featuredCategories);
+
+    const track = document.querySelector('#products-container');
+    if (!track) return;
+
+    const viewport = track.parentElement;
+    requestAnimationFrame(() => {
+        const distance = Math.max(0, track.scrollWidth - viewport.clientWidth);
+        track.style.setProperty('--scroll-end', `-${distance}px`);
+    });
 })
 
 const togBtn = document.getElementById('nav-toggle')
@@ -78,7 +88,7 @@ let toggleMenu = null; // store menu reference
 togBtn.addEventListener('click', () => {
     const toggleMenu = document.createElement('div');
     toggleMenu.className = 
-    'absolute right-4 top-2 bg-white w-56 min-h-screen overflow-y-auto transition-transform transform ease-in-out duration-300';
+    'absolute right-1 top-2 bg-white w-56 min-h-screen overflow-y-auto transition-transform transform ease-in-out duration-300';
     toggleMenu.innerHTML = `
         <button id="close-menu" class="toggle-btn flex flex-col md:hidden px-3 py-2 cursor-pointer" aria-label="Close menu" aria-expanded="true">
             <img src="assets/close.png" alt="Close Menu" class=" w-5 h-5">

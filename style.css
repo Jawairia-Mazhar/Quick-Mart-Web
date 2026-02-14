@@ -16,3 +16,16 @@ img.blend {
 .icon-amber {
   filter: brightness(0) saturate(100%) invert(65%) sepia(68%) saturate(1250%) hue-rotate(5deg) brightness(104%);
 }
+
+/* product cards scrolling */
+.infinite-scroll-track {
+  animation: scroll-cards 25s linear forwards;
+  -webkit-animation: scroll-cards 25s linear forwards;
+  width: max-content;
+  will-change: transform;
+}
+
+@keyframes scroll-cards {
+  from { transform: translateX(0); }
+  to { transform: translateX(var(--scroll-end, 0px)); }
+}
