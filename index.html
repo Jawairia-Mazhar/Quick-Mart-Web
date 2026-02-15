@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="overflow-x-hidden">
-  <nav class="grid grid-cols-[1fr_auto] items-center md:p-4 bg-orange-20 shadow-[#b00020] shadow-md md:auto-cols-auto md:grid-cols-[1fr_auto_1fr] ">
+  <nav class="grid grid-cols-[1fr_auto] items-center md:p-4 bg-white shadow-[#b00020] shadow-md md:auto-cols-auto md:grid-cols-[1fr_auto_1fr] sticky top-0 z-50">
     <img src="assets/QuickMartIcon.png" alt="Quick Mart Logo" class="w-30 md:w-38 h-12 md:h-16">
 
 <!-- Right Column (Mobile) : cart + toggle-->
@@ -27,9 +27,9 @@
     <ul id="nav-menu" 
         class="hidden top-full left-0 right-0 space-y-2 px-4 py-3 font-lg bg-orange-20 
         md:flex md:flex-row md:static  md:space-y-0 md:space-x-8 md:p-0 md:bg-transparent md:items-center md:justify-center">
-      <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Home</a></li>
-      <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Products</a></li>
-      <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">About Us</a></li>
+      <li><a href="#home-page" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Home</a></li>
+      <li><a href="#products" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Products</a></li>
+      <li><a href="#about-us" class="text-gray-700 hover:text-orange-500 hover:font-semibold">About Us</a></li>
       <li><a href="#" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Contact</a></li>
     </ul>
         
@@ -39,7 +39,8 @@
   </nav>
 
 <!-- landing page   -->
-  <main class="flex flex-col md:flex-row items-center md:justify-between mt-1.5 p-3 bg-orange-400">
+  <main class="flex flex-col md:flex-row items-center scroll-mt-25 md:justify-between mt-1.5 p-3 bg-orange-400"  
+  id="home-page">
     <div class="md:ml-13 space-y-4 mt-4">
       <h1 class="text-5xl text-orange-50 font-bold">Your trusted destination for everyday essentials.</h1>
             <p class="text-xl">Your one‑stop store for groceries, essentials, and everyday needs — fast, affordable, and always convenient.</p>
@@ -78,14 +79,15 @@
 
 
 <!-- Best Selling Products section  -->
-    <section class="">
+    <section id="products" class="scroll-mt-24">
         <h3 class="text-xl font-semibold text-gray-700 p-2">Best Selling Products</h3>
         <div id="products-container" class="infinite-scroll-track flex gap-4 p-2 md:grid md:grid-cols-6 md:justify-center md:p-5 gap-x-6 md:gap-12">
         </div>
     </section>
 
 <!-- About Us section  -->
-    <section class="py-12 px-4 md:px-8 bg-amber-300">
+    <section class="py-12 px-4 md:px-8 bg-amber-300 scroll-mt-24"
+     id="about-us">
       <div class="flex flex-col md:flex-row items-center gap-8">
         <!-- Image -->
         <div class="md:w-1/2">

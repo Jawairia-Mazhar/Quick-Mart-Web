@@ -94,9 +94,9 @@ togBtn.addEventListener('click', () => {
             <img src="assets/close.png" alt="Close Menu" class=" w-5 h-5">
         </button>
         <ul class="flex flex-col gap-4 p-4 ">
-            <li><a href="#" class="text-black hover:text-orange-500 hover:font-semibold">Home</a></li>
-            <li><a href="#" class="text-black hover:text-orange-500 hover:font-semibold">Products</a></li>
-            <li><a href="#" class="text-black hover:text-orange-500 hover:font-semibold">Categories</a></li>
+            <li><a href="#home-page" class="text-black hover:text-orange-500 hover:font-semibold">Home</a></li>
+            <li><a href="#products" class="text-black hover:text-orange-500 hover:font-semibold">Products</a></li>
+            <li><a href="#about-us" class="text-black hover:text-orange-500 hover:font-semibold">About Us</a></li>
         </ul>
     `;    
     document.body.appendChild(toggleMenu);
