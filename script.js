@@ -8,11 +8,11 @@ const mostBoughtProducts = [
 ]
 
 const featuredCategories = [
-    {id: 1, name: "Vegetables", image: "https://picsum.photos/100/50"},
-    {id: 2, name: "Fruits", image: "https://picsum.photos/100/50"},
-    {id: 3, name: "Bakery", image: "https://picsum.photos/100/50"},
-    {id: 4, name: "Meat", image: "https://picsum.photos/100/50"},
-    {id: 5, name: "Milk & Dairy", image: "https://picsum.photos/100/50"},
+    {id: 1, name: "Vegetables", image: "assets/vegetables.png"},
+    {id: 2, name: "Fruits", image: "assets/fruit.png"},
+    {id: 3, name: "Bakery", image: "assets/bakery.png"},
+    {id: 4, name: "Meat", image: "assets/meat.png"},
+    {id: 5, name: "Milk & Dairy", image: "assets/milk-dairy.png"},
 ]
 
 function createProductCard(product) {
@@ -25,11 +25,78 @@ function createProductCard(product) {
         <span class="text-md font-medium">${product.name}</span>
         <span class="text-xs">Fresh ${product.name} | ${product.quantity}</span>
         <span class="text-sm font-medium">Rs. ${product.price}</span>
-        <div class="flex-1 place-items-end mr-[5%] mt-0">
-            <img src="assets/add-to-cart.png" alt="Add to Cart" class="w-8 h-8 cursor-pointer items-end self-end mr-[8%] rounded-xl">
-        </div>
+        <button 
+        class=" flex-1 place-items-end mr-[5%] mt-0"
+       >
+            <img src="assets/add-to-cart.png" alt="Add to Cart" 
+            class="add-to-cart w-8 h-8 cursor-pointer items-end self-end mr-[8%] rounded-xl"
+            data-id="${product.id}">
+        </button>
     `;
     return productCard;
+}
+let cart = [];
+
+function addToCart(productId){
+    const product = mostBoughtProducts.find(p => p.id === Number(productId));
+    if (!product) {
+    console.error('Product not found:', productId);
+    return;
+  }
+
+    if (!cart[product.id]) {
+        cart[product.id] = { ...product, qty: 1 };
+    } else {
+        cart[product.id].qty += 1;
+    }
+
+    renderCart(); 
+}
+
+// Event Delegation for Add to Cart buttons
+document.addEventListener('click', function(e){
+    if(e.target.classList.contains('add-to-cart')){
+        const productId = parseInt(e.target.dataset.id);
+        addToCart(productId);
+    }
+});
+
+let cartItems = null;
+
+const cartBtn = document.getElementById('cart-btn');
+cartBtn.addEventListener('click', () => {
+    cartItems = document.createElement('div');
+    cartItems.className = 'fixed top-0 z-70 right-0 bg-white w-64 h-full overflow-y-auto'
+    cartItems.innerHTML = `
+    <h2 class="p-4 text-xl font-semibold">Cart</h2>
+    <div id="cart-items" class="p-4">  </div>
+    `
+    document.body.appendChild(cartItems);
+})
+
+function renderCart() {
+  const cartContainer = document.getElementById('cart-items');
+  if (!cartContainer) return; // prevents "cannot set properties of null"
+
+  cartContainer.innerHTML = '';
+  let total = 0;
+
+  cart.forEach(item => {
+    const price = Number(item.price) || 0;
+    const qty = Number(item.qty) || 0;
+    const lineTotal = price * qty;
+    total += lineTotal;
+
+    cartContainer.innerHTML += `
+      <div class="flex justify-between mb-2">
+        <img src="${item.image}" alt="${item.name}" class="w-10 h-10 object-contain">
+        <span>${item.name || 'Unknown item'} x ${qty}</span>
+        <span>Rs ${lineTotal}</span>
+      </div>
+      <div>
+      </div>
+    `;
+  });
 }
 
 function renderProducts(containerSelector, productsArray) {
@@ -86,9 +153,10 @@ let toggleMenu = null; // store menu reference
 
 // upon clicking the toggle button create a div having the ul list items of the menu. floating on the right side of the screen. The div should have a close button to hide the menu when clicked.
 togBtn.addEventListener('click', () => {
-    const toggleMenu = document.createElement('div');
+    if (toggleMenu) { return; }
+    toggleMenu = document.createElement('div');
     toggleMenu.className = 
-    'absolute right-1 top-2 bg-white w-56 min-h-screen overflow-y-auto transition-transform transform ease-in-out duration-300';
+    'fixed right-0 top-0 z-[60] mt-12 bg-white w-64 h-[calc(100vh-4rem)] overflow-y-auto shadow-lg transition-transform transform ease-in-out duration-300';
     toggleMenu.innerHTML = `
         <button id="close-menu" class="toggle-btn flex flex-col md:hidden px-3 py-2 cursor-pointer" aria-label="Close menu" aria-expanded="true">
             <img src="assets/close.png" alt="Close Menu" class=" w-5 h-5">
@@ -100,10 +168,12 @@ togBtn.addEventListener('click', () => {
         </ul>
     `;    
     document.body.appendChild(toggleMenu);
+    document.body.style.overflow = 'hidden';
 
     const closeBtn = toggleMenu.querySelector('#close-menu');
     closeBtn.addEventListener('click', () => {
         toggleMenu.remove();
         toggleMenu = null;
+        document.body.style.overflow = '';
     });
 });
