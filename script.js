@@ -52,12 +52,25 @@ function addToCart(productId){
 
     renderCart(); 
 }
+function removeFromCart(productId) {
+    if (cart[productId]) {
+        delete(cart[productId]);
+        renderCart();
+    }
+}
 
 // Event Delegation for Add to Cart buttons
 document.addEventListener('click', function(e){
     if(e.target.classList.contains('add-to-cart')){
         const productId = parseInt(e.target.dataset.id);
         addToCart(productId);
+    }
+});
+// Event delegation for Remove from Cart buttons
+document.addEventListener('click', function(e){
+    if(e.target.classList.contains('remove-item')){
+        const productId = parseInt(e.target.dataset.id);
+        removeFromCart(productId);
     }
 });
 
@@ -70,6 +83,7 @@ cartBtn.addEventListener('click', () => {
     cartItems.innerHTML = `
     <h2 class="p-4 text-xl font-semibold">Cart</h2>
     <div id="cart-items" class="p-4">  </div>
+    <div id="cart-total" class="p-4 text-xl font-medium absolute bottom-0">   </div>
     `
     document.body.appendChild(cartItems);
 })
@@ -80,6 +94,8 @@ function renderCart() {
 
   cartContainer.innerHTML = '';
   let total = 0;
+  let allTotal = 0;
+    allTotal = total.toFixed(2);
 
   cart.forEach(item => {
     const price = Number(item.price) || 0;
@@ -88,14 +104,21 @@ function renderCart() {
     total += lineTotal;
 
     cartContainer.innerHTML += `
-      <div class="flex justify-between mb-2">
+      <div class="flex justify-between mb-2 items-center">
         <img src="${item.image}" alt="${item.name}" class="w-10 h-10 object-contain">
         <span>${item.name || 'Unknown item'} x ${qty}</span>
         <span>Rs ${lineTotal}</span>
+        <img src="assets/trash.png" alt="Remove Item" class="w-4 h-4 cursor-pointer remove-item" data-id="${item.id}">
       </div>
-      <div>
-      </div>
-    `;
+    `
+    const cartTotal = document.getElementById('cart-total');
+    if (cartTotal){
+        cartTotal.innerHTML = `<span class="text-sm">Total: Rs ${total.toFixed(2)}</span>`;
+    }
+    else {
+        console.warn('Cart total element not found.');
+    }
+    ;
   });
 }
 
