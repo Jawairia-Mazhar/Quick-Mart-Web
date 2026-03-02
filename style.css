@@ -33,3 +33,35 @@ img.blend {
   from { transform: translateX(0); }
   to { transform: translateX(var(--scroll-end, 0px)); }
 }
+
+.product-image { position: relative; }
+
+/* Show the hidden-box when hovering over the trigger div */
+.trigger:hover .add-product {
+    /*background-color: #fbbf24;
+    amber-50*/position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2px;
+    /*background-color: white;
+    */border-radius: 1rem;
+    padding: 0.15rem;
+}
+
+/* Optional: Keep it visible when hovering over the hidden-box itself */
+.add-product:hover {
+    display: flex;
+}
+
+.btn-plus,
+.btn-minus {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  font-size: 1.125rem;
+  line-height: 1;
+}
