@@ -37,9 +37,8 @@ img.blend {
 .product-image { position: relative; }
 
 /* Show the hidden-box when hovering over the trigger div */
-.trigger:hover .add-product {
-    /*background-color: #fbbf24;
-    amber-50*/position: absolute;
+.trigger:hover .add-to-cart {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +52,7 @@ img.blend {
 }
 
 /* Optional: Keep it visible when hovering over the hidden-box itself */
-.add-product:hover {
+.add-to-cart:hover {
     display: flex;
 }
 

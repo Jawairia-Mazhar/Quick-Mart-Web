@@ -8,9 +8,10 @@ const mostBoughtProducts = [
 ]
 
 const featuredCategories = [
-    {id: 1, name: "Vegetables", image: "assets/vegetables.png"},
+    {id: 1, name: "Vegetables", image: "assets/vegetable.png"},
     {id: 2, name: "Fruits", image: "assets/fruit.png"},
     {id: 3, name: "Bakery", image: "assets/bakery.png"},
     {id: 4, name: "Meat", image: "assets/meat.png"},
-    {id: 5, name: "Milk & Dairy", image: "assets/milk-dairy.png"},
+    {id: 5, name: "Milk & Dairy", image: "assets/dairy.png"},
+    {id: 6, name: "Snacks", image: "assets/snacks.png"}
 ]
