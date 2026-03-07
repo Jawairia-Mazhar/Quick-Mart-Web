@@ -15,9 +15,16 @@ cartBtn.addEventListener('click', () => {
     <div id="cart-total" class="p-4 text-xl font-medium absolute bottom-0">   </div>
     `
     document.body.appendChild(cartItems);
-    if (cartItems) return; //This checks if cart has a value, function immediately exits then.
+      const close = cartItems.querySelector('#close-cart');
+    if (close && !close.dataset.bound) {
+    close.dataset.bound = '1';
+    close.addEventListener('click', () => {
+      cartItems.remove();
+      cartItems = null;
+      document.body.style.overflow = '';
+    });
 
-    renderCart();
+    renderCart();}
 })
 
 function addToCart(productId){
@@ -34,29 +41,27 @@ function addToCart(productId){
         cart[product.id].qty += 1; // if the product exists already in the cart, then increase the quantity by 1
     }
 
-    const close = cartItems.querySelector('#close-cart');
-    close.addEventListener('click', () => {
-        cartItems.remove(); //updates the UI by removing the cart items.
-        cartItems = null; //resets the memory to null.
-        document.body.style.overflow = ''; //restore default scrolling
-    });
-    renderCart(); 
-}
+    renderProducts('#products-container', mostBoughtProducts);
+    QuantityControls();
+    renderCart(); //updates the cart UI to reflect the changes in the cart object.}
+};
 
 function removeFromCart(productId) {
     if (cart[productId]) {
         delete(cart[productId]);
         console.log(`Product ${productId} removed from cart.`);
-        renderCart();
-    }
+        renderProducts('#products-container', mostBoughtProducts);
+        QuantityControls();
+        renderCart();     }
 }
 
 // Event Delegation for Add to Cart buttons
 document.addEventListener('click', function(e){
-    if(e.target.classList.contains('add-to-cart')){
-        const productId = parseInt(e.target.dataset.id);
-        addToCart(productId);
-    }
+    const addBtn = e.target.closest('.add-to-cart') //previously used e.target.classList.contains(...), so clicking the inner <span> fails.
+    if (!addBtn) return;
+
+    const productId = parseInt(addBtn.dataset.id, 10);
+    addToCart(productId);
 });
 // Event delegation for Remove from Cart buttons
 document.addEventListener('click', function(e){
@@ -90,8 +95,38 @@ function renderCart() {
             class="w-4 h-4 cursor-pointer remove-item" 
             data-id="${item.id}">
       </div>
-    `; 
+
+      `; 
 });
     cartTotal.innerHTML = `<span class="text-sm">Total: Rs ${total.toFixed(2)}</span>`;
 }
 
+
+function QuantityControls() {
+document.querySelectorAll('.quantity-controls').forEach(control => {
+    const decrementBtn = control.querySelector('.btn-minus');
+    const incrementBtn = control.querySelector('.btn-plus');
+    const quantityInput = control.querySelector('input');
+
+    
+    decrementBtn.addEventListener('click', () => {
+        let currentQty = parseInt(quantityInput.value) || 1;
+    if (currentQty > 1) {
+        quantityInput.value = currentQty - 1;
+    }
+    });
+
+    incrementBtn.addEventListener('click', () => {
+    let currentQty = parseInt(quantityInput.value) || 1;
+    quantityInput.value = currentQty + 1;
+    });
+
+// Prevent manual entry of invalid values
+    quantityInput.addEventListener('input', () => {
+        let value = parseInt(quantityInput.value);
+        if (isNaN(value) || value < 1) {
+            quantityInput.value = 1;
+        }
+    });
+});
+}

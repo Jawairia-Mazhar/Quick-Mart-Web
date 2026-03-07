@@ -46,8 +46,7 @@ img.blend {
     left: 50%;
     transform: translateX(-50%);
     bottom: 2px;
-    /*background-color: white;
-    */border-radius: 1rem;
+    border-radius: 1rem;
     padding: 0.15rem;
 }
 

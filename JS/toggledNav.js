@@ -1,6 +1,7 @@
 /* product cards scrolling */
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts('#products-container', mostBoughtProducts);
+    QuantityControls();
     renderCategories('#categories-container', featuredCategories);
 
     const track = document.querySelector('#products-container');
