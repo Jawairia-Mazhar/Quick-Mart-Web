@@ -103,30 +103,44 @@ function renderCart() {
 
 
 function QuantityControls() {
-document.querySelectorAll('.quantity-controls').forEach(control => {
-    const decrementBtn = control.querySelector('.btn-minus');
-    const incrementBtn = control.querySelector('.btn-plus');
-    const quantityInput = control.querySelector('input');
-
+    document.querySelectorAll('.quantity-controls').forEach(control => {
+        const decrementBtn = control.querySelector('.btn-minus');
+        const incrementBtn = control.querySelector('.btn-plus');
+        const quantityInput = control.querySelector('input');
+        if (!decrementBtn || !incrementBtn || !quantityInput) return; //if any of the condition is true, whole condition becomes true
     
+        const productId = Number(quantityInput.dataset.id);
+
     decrementBtn.addEventListener('click', () => {
         let currentQty = parseInt(quantityInput.value) || 1;
-    if (currentQty > 1) {
-        quantityInput.value = currentQty - 1;
-    }
+        currentQty = Math.max(1, currentQty - 1); // Ensure quantity doesn't go below 1
+        quantityInput.value = currentQty;
+
+        if (cart[productId]) {
+            cart[productId].qty = currentQty;
+        }
+        renderCart();
     });
 
     incrementBtn.addEventListener('click', () => {
-    let currentQty = parseInt(quantityInput.value) || 1;
-    quantityInput.value = currentQty + 1;
+        let currentQty = parseInt(quantityInput.value) || 1;
+        currentQty += 1;
+        quantityInput.value = currentQty
+
+        if (cart[productId]) {
+            cart[productId].qty = currentQty;
+        }
+        renderCart();
     });
 
 // Prevent manual entry of invalid values
     quantityInput.addEventListener('input', () => {
         let value = parseInt(quantityInput.value);
         if (isNaN(value) || value < 1) {
-            quantityInput.value = 1;
+            quantityInput.value = 1; // Reset to 1 if invalid 
         }
+        if (cart[productId]){ cart[productId].qty = value;}
+        renderCart();
     });
 });
 }
