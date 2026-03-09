@@ -18,8 +18,9 @@ img.blend {
 }
 
 .icon-amber {
-  filter: brightness(0) saturate(100%) invert(65%) sepia(68%) saturate(1250%) hue-rotate(5deg) brightness(104%);
+  filter: brightness(0) saturate(100%) invert(69%) sepia(84%) saturate(1352%) hue-rotate(334deg) brightness(101%) contrast(98%);
 }
+
 
 /* product cards scrolling */
 .infinite-scroll-track {
@@ -48,6 +49,12 @@ img.blend {
     bottom: 2px;
     border-radius: 1rem;
     padding: 0.15rem;
+}
+.quantity-controls{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* moving an element horizontally along the X-axis */
+  bottom: 2px;
 }
 
 /* Optional: Keep it visible when hovering over the hidden-box itself */

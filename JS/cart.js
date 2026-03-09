@@ -31,9 +31,7 @@ function addToCart(productId){
     const product = mostBoughtProducts.find(p => p.id === Number(productId));
 
     if (!product) {    // If no product is found, log an error and stop the function
-    console.error('Product not found:', productId);
-    return;
-  }
+    return;}
 
     if (!cart[product.id]) { //if the product does not exist in the cart, add it in the cart
         cart[product.id] = { ...product, qty: 1 }; //spread the product details and add initial quantity of 1
@@ -107,18 +105,26 @@ function QuantityControls() {
         const decrementBtn = control.querySelector('.btn-minus');
         const incrementBtn = control.querySelector('.btn-plus');
         const quantityInput = control.querySelector('input');
-        if (!decrementBtn || !incrementBtn || !quantityInput) return; //if any of the condition is true, whole condition becomes true
-    
+        if (!decrementBtn || !incrementBtn || !quantityInput) return; //if any of the condition is false, whole condition becomes true
         const productId = Number(quantityInput.dataset.id);
 
     decrementBtn.addEventListener('click', () => {
         let currentQty = parseInt(quantityInput.value) || 1;
-        currentQty = Math.max(1, currentQty - 1); // Ensure quantity doesn't go below 1
+        currentQty = Math.max(0, currentQty - 1); // Ensure quantity doesn't go below 1
         quantityInput.value = currentQty;
 
-        if (cart[productId]) {
-            cart[productId].qty = currentQty;
-        }
+    if (currentQty === 0) {
+        delete cart[productId]; // Remove from cart entirely
+        control.classList.add('hidden'); // hide quantity Controls
+        control.style.display = ''; // let CSS hover control it, restored to default
+
+        const addCartBtn = control.parentElement.querySelector('.add-to-cart');
+        if (addCartBtn) addCartBtn.style.display = ''; // show Add to Cart button
+        
+    } else if (cart[productId]) {
+        cart[productId].qty = currentQty;
+    }
+
         renderCart();
     });
 
@@ -140,7 +146,9 @@ function QuantityControls() {
             quantityInput.value = 1; // Reset to 1 if invalid 
         }
         if (cart[productId]){ cart[productId].qty = value;}
+        
         renderCart();
     });
 });
-}
+
+} 
