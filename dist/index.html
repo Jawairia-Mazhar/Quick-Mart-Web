@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Mart Web</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+  <script type="module" crossorigin src="/assets/index-CL3Gbkj_.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CsjLfe6l.css">
+</head>
+<body class="overflow-x-hidden">
+  <nav class="grid grid-cols-[1fr_auto] items-center md:p-4 bg-white shadow-[#b00020] shadow-md md:auto-cols-auto md:grid-cols-[1fr_auto_1fr] sticky top-0 z-50">
+    <img src="/assets/QuickMartIcon-yI9kCMgh.png" alt="Quick Mart Logo" class="w-30 md:w-38 h-12 md:h-16">
+
+<!-- Right Column (Mobile) : cart + toggle-->
+  <div class="flex items-center gap-3 md:hidden">
+    <button class="items-center justify-end flex">
+      <img src="/assets/basket-tPU2lzO8.png" alt="" class="icon-amber w-7 h-7 cursor-pointer">
+    </button>
+    <button id="nav-toggle" class="toggle-btn flex flex-col px-3 py-2 text-gray-700 cursor-pointer 
+    md:hidden" aria-label="Toggle menu" aria-expanded="false">
+      <span class="block w-6 h-0.5 mb-1.5 bg-gray-700"></span>
+      <span class="block w-6 h-0.5 mb-1.5 bg-gray-700"></span>
+      <span class="block w-6 h-0.5 bg-gray-700"></span>
+    </button>
+  </div>
+
+<!-- Middle Column (Desktop) : menu -->
+    <ul id="nav-menu" 
+        class="hidden top-full left-0 right-0 space-y-2 px-4 py-3 font-lg bg-orange-20 
+        md:flex md:flex-row md:static  md:space-y-0 md:space-x-8 md:p-0 md:bg-transparent md:items-center md:justify-center">
+      <li><a href="#home-page" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Home</a></li>
+      <li><a href="#products" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Products</a></li>
+      <li><a href="#about-us" class="text-gray-700 hover:text-orange-500 hover:font-semibold">About Us</a></li>
+      <li><a href="#contact" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Contact</a></li>
+    </ul>
+        
+    <button id="cart-btn" class="hidden items-center justify-end md:flex">
+      <img src="/assets/basket-tPU2lzO8.png" alt="" class=" icon-amber w-7 h-7 cursor-pointer">
+    </button>
+  </nav>
+
+<!-- landing page   -->
+  <main class="flex flex-col md:flex-row items-center scroll-mt-25 md:justify-between mt-1.5 p-3 bg-orange-400"  
+  id="home-page">
+    <div class="md:ml-13 space-y-4 mt-4">
+      <h1 class="text-5xl text-orange-50 font-bold">Your trusted destination for everyday essentials.</h1>
+            <p class="text-xl">Your one‑stop store for groceries, essentials, and everyday needs — fast, affordable, and always convenient.</p>
+            <button class="px-6 py-3 text-black bg-orange-50 hover:bg-orange-600 rounded-2xl transition duration-300 cursor-pointer">Shop Now</button>
+        </div>
+        <img src="/assets/coverImage-D1n4vrpM.png" alt="cover page image" class="object-cover w-120 h-120 md:mt-14 md:mr-20">
+    </main>
+
+<!-- Categories -->
+    <section class="md:w-full md:h-40">
+        <h2 class="p-2 text-xl font-bold text-gray-700">Featured Categories</h2>
+        <div id="categories-container"
+            class="grid grid-cols-3 md:grid-cols-6 justify-center place-items-center p-2 md:p-5 gap-2 md:gap-8">
+            <!-- Featured category cards will be generated here -->
+        </div>
+    </section>
+
+<!-- Promotional images section -->
+    <section class="w-full px-4 py-6 md:px-8 md:py-5 mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+  <!-- <div class="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 md:gap-6"> -->
+    <div class="overflow-hidden rounded-md shadow-md">
+      <img
+        src="/assets/SalePoster1-Bf7S6f4u.jpg"
+        alt="Promotional Image 1"
+        class="h-56 w-full object-fit-cover transition-transform duration-300 hover:scale-105 md:h-80"
+      />
+    </div>
+    <div class="overflow-hidden rounded-md shadow-md">
+      <img
+        src="/assets/SalePoster2-CP3v6LOV.jpg"
+        alt="Promotional Image 2"
+        class="h-56 w-full object-fit-cover transition-transform duration-300 hover:scale-105 md:h-80"
+      />
+    </div>
+  <!-- </div> -->
+    </section>
+
+<!-- Best Selling Products section  -->
+    <section id="products" class="scroll-mt-24">
+        <h3 class="text-xl font-semibold text-gray-700 p-2">Best Selling Products</h3>
+        <div id="products-container" class="infinite-scroll-track flex gap-4 p-2 md:grid md:grid-cols-6 md:justify-center md:p-5 gap-x-6 md:gap-12">
+        </div>
+    </section>
+
+<!-- About Us section  -->
+    <section class="py-12 px-4 md:px-8 bg-orange-400 scroll-mt-18"
+     id="about-us">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <!-- Image -->
+        <div class="md:w-1/2">
+          <img src="/assets/about-BQTlC75N.png" alt="Quick Mart - Quality Groceries" class="rounded-lg w-[90%]">
+        </div>
+        
+        <!-- Text Content -->
+        <div class="md:w-1/2 space-y-4">
+              <h2 class="max-w-6xl text-4xl font-bold text-white mb-6 text-left">About Quick Mart</h2>
+                <p class="text-black leading-relaxed">
+                    At Quick Mart, we believe that quality groceries should be accessible, affordable, and convenient for everyone. Founded with a mission to transform the way families shop for everyday essentials, we've grown into your trusted neighborhood source for fresh produce, quality meats, dairy products, and pantry staples.
+                </p>
+                
+                <p class="text-black leading-relaxed">
+                    Every product we stock is carefully selected to meet our high standards for freshness and quality. From farm-fresh vegetables and fruits to premium meats and essential groceries, we're committed to bringing you the best selection at competitive prices.
+                </p>
+                
+                <p class="text-black leading-relaxed">
+                    Our fast, friendly service and convenient shopping experience mean you can focus on what matters most—your family and home. Whether you're shopping for a quick meal or stocking your pantry, Quick Mart is here to make your life easier, one shopping trip at a time.
+                </p>
+                
+                <div class="pt-4">
+                    <h3 class="text-xl font-semibold text-white mb-3">Why Choose Quick Mart?</h3>
+                    <ul class="space-y-2 text-black">
+                        <li class="flex items-center"><span class="text-white font-bold mr-2">✓</span> Fresh Quality Products</li>
+                        <li class="flex items-center"><span class="text-white font-bold mr-2">✓</span> Competitive Pricing</li>
+                        <li class="flex items-center"><span class="text-white font-bold mr-2">✓</span> Fast & Convenient Shopping</li>
+                        <li class="flex items-center"><span class="text-white font-bold mr-2">✓</span> Friendly, Helpful Staff</li>
+                    </ul>
+                </div>
+          </div>
+            
+        </div>
+      </section>  
+
+<!-- customers, products, categories, and awards section -->
+    <section class="w-80% h-35 p-4 grid grid-cols-4 justify-center items-center">
+      <div class="flex space-x-3" >
+        <img src="/assets/satisfied-customer-Cs7pZXWC.png" alt="satisfied customer" class="object-cover w-10 h-10 md:w-12 md:h-12 md:ml-20 icon-amber">
+          <div class="flex flex-col">
+            <span class="md:text-xl font-semibold">1,800<span class="text-amber-300">+</span></span>
+            <span>Satisfied Customers</span>
+          </div>
+     </div>
+      <div class="flex space-x-3" >
+        <img src="/assets/in-stock-DHJZXE5u.png" alt="satisfied customer" class="object-cover w-10 h-10 md:w-12 md:h-12 md:ml-20 icon-amber">
+          <div class="flex flex-col">
+            <span class="md:text-xl font-semibold">362<span class="text-amber-300">+</span></span>
+            <span>Active Products</span>
+          </div>
+     </div>
+      <div class="flex space-x-3" >
+        <img src="/assets/categorise-D2OMZC2N.png" alt="satisfied customer" class="object-cover w-10 h-10 md:w-12 md:h-12 md:ml-20 icon-amber">
+          <div class="flex flex-col"> 
+            <span class="md:text-xl font-semibold">30<span class="text-amber-300">+</span></span>
+            <span>Food Categories</span>
+          </div>
+     </div>
+      <div class="flex space-x-3" >
+        <img src="/assets/medal-DS3-KRmc.png" alt="satisfied customer" class="object-cover w-10 h-10 md:w-12 md:h-12 md:ml-20 icon-amber">
+          <div class="flex flex-col">
+            <span class="md:text-xl font-semibold">100<span class="text-amber-300">+</span></span>
+            <span>Awards Winning</span>
+          </div>
+     </div>
+    </section>
+
+<!-- Customer Testimonials section   -->
+    <section>
+      <h3 class="md:p-2 text-2xl text-gray-700 font-bold text-center">Customer Testimonials</h3>
+
+        <div class="flex flex-col md:flex-row gap-4 justify-center items-center p-2 md:p-5">
+          <div class="w-full md:w-1/3 bg-gray-100 rounded-lg p-4">
+            <p class="text-gray-700 italic">"Quick Mart has completely transformed my grocery shopping experience. The quality of their products is outstanding, and the convenience of their online ordering system saves me so much time. I can't imagine shopping anywhere else!"</p>
+            <span class="block mt-2 text-sm font-semibold text-gray-800">- Sarah M.</span>
+          </div>
+          <div class="w-full md:w-1/3 bg-gray-100 rounded-lg p-4">
+            <p class="text-gray-700 italic">"I love the variety of products that Quick Mart offers. From fresh produce to pantry staples, they have everything I need. The prices are competitive, and the customer service is top-notch. Highly recommend!"</p>
+            <span class="block mt-2 text-sm font-semibold text-gray-800">- John D.</span>
+          </div>
+          <div class="w-full md:w-1/3 bg-gray-100 rounded-lg p-4">
+            <p class="text-gray-700 italic">"Quick Mart is my go-to for all my grocery needs. The quality of their products is consistently excellent, and the convenience of their delivery service is unbeatable. I can't recommend them enough!"</p>
+            <span class="block mt-2 text-sm font-semibold text-gray-800">- Emily R.</span>
+          </div>
+
+    </section>
+
+<!-- Footer section -->
+<Footer 
+class="w-full h-40 text-gray-800 bg-white grid grid-cols-[1fr_3fr_2fr] items-center p-4 gap-4"
+id="contact">
+  <div class=""> <img src="/assets/QuickMartIcon-yI9kCMgh.png" alt="Quick Mart Logo" class="w-30 md:w-38 h-12 md:h-16">
+  </div>
+  <div class="flex flex-col gap-1">
+    <h4 class="font-bold text-lg">Contact Us</h4>
+    <span><span class="font-bold text-sm">Phone:</span> 123-456-7890</span>
+    <span><span class="font-bold text-sm">Email:</span> info@quickmart.com</span>
+    <span><span class="font-bold text-sm">Address:</span> 123 Main Street, City, State 12345</span>
+  </div>
+  <div>
+    <span class="font-bold text-md">Our Timings</span>
+    <div class="flex gap-2">
+      <span>Monday - Sunday</span>
+      <span>12:00 AM - 11:59 PM</span>
+    </div>
+  </div>
+</Footer>
+
+  
+</body>
+</html>
