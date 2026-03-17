@@ -27,30 +27,34 @@ cartBtn.addEventListener('click', () => {
     renderCart();}
 })
 
+function refreshUI() {
+    renderProducts('#products-container', mostBoughtProducts);
+    renderCart();
+    QuantityControls();
+}
+
 function addToCart(productId){
     const product = mostBoughtProducts.find(p => p.id === Number(productId));
 
-    if (!product) {    // If no product is found, log an error and stop the function
-    return;}
+    if (!product) {
+        return;
+    }
 
-    if (!cart[product.id]) { //if the product does not exist in the cart, add it in the cart
-        cart[product.id] = { ...product, qty: 1 }; //spread the product details and add initial quantity of 1
+    if (!cart[product.id]) {
+        cart[product.id] = { ...product, qty: 1 };
     } else {
         cart[product.id].qty += 1; // if the product exists already in the cart, then increase the quantity by 1
     }
 
-    renderProducts('#products-container', mostBoughtProducts);
-    QuantityControls();
-    renderCart(); //updates the cart UI to reflect the changes in the cart object.}
+    refreshUI();
 };
 
 function removeFromCart(productId) {
     if (cart[productId]) {
-        delete(cart[productId]);
+        delete cart[productId];
         console.log(`Product ${productId} removed from cart.`);
-        renderProducts('#products-container', mostBoughtProducts);
-        QuantityControls();
-        renderCart();     }
+        refreshUI();
+    }
 }
 
 // Event Delegation for Add to Cart buttons
@@ -72,6 +76,7 @@ document.addEventListener('click', function(e){
 function renderCart() {
   const cartContainer = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
+//   const qtycontrols = document.querySelectorAll('.quantity-controls');
 
   if (!cartContainer || !cartTotal) return; // prevents "cannot set properties of null"
 
@@ -85,23 +90,37 @@ function renderCart() {
     total += lineTotal; //Each items total is added to overall total price of the cart.
 
     cartContainer.innerHTML += `
-      <div class="flex justify-between mb-2 items-center">
-        <img src="${item.image}" alt="${item.name}" class="w-10 h-10 object-contain">
-        <span>${item.name || 'Unknown item'} x ${qty}</span>
-        <span>Rs ${lineTotal}</span>
-        <img src="assets/trash.png" alt="Remove Item" 
-            class="w-4 h-4 cursor-pointer remove-item" 
-            data-id="${item.id}">
-      </div>
-
-      `; 
+      <div class="grid grid-cols-[1fr_3fr] gap-1 mb-2 items-center  border-b border-gray-300 pb-2">
+        <div class="place-items-center w-12 h-12">
+            <img src="${item.image}" alt="${item.name}" class=" object-contain">
+        </div>
+        <div class="flex flex-col">
+            <span>${item.name || 'Unknown item'} | ${item.quantity || 'Unknown brand'}</span>
+            <span class="ml-auto text-right w-full">Rs ${lineTotal.toFixed(1)}</span>
+            <div class='flex justify-between items-center gap-2'>
+                <div class="quantity-controls justify-between w-20 overflow-hidden " id="quantity-ctrl">
+                    <button class="btn-plus "><img src="assets/plus.png" alt="Plus" class="w-5 h-5 cursor-pointer bg-orange-400 rounded-md pt-0.5"/> </button>
+                    <input type="text" class="text-sm font-medium w-8 text-center items-center border border-gray-300 rounded-md" data-id=${item.id} min="1" value="${qty}">
+                    <button class="btn-minus "><img src="assets/minus.png" alt="Minus" class="w-5 h-5 cursor-pointer bg-orange-400 rounded-md pt-0.5"/></button>
+                </div>
+                <img src="assets/trash.png" alt="Remove Item" 
+                    class="w-4 h-4 cursor-pointer remove-item" 
+                    data-id="${item.id}">
+            </div>
+        </div>
+    </div>
+            `; 
 });
+    QuantityControls(); // Call the function to attach event listeners to the buttons after rendering in the cart
     cartTotal.innerHTML = `<span class="text-sm">Total: Rs ${total.toFixed(2)}</span>`;
 }
 
 
 function QuantityControls() {
     document.querySelectorAll('.quantity-controls').forEach(control => {
+        if (control.dataset.bound === '1') return; // avoid binding listeners multiple times
+        control.dataset.bound = '1'; //This resolves the issue where clicking the plus button looked like it increased quantity unexpectedly.
+
         const decrementBtn = control.querySelector('.btn-minus');
         const incrementBtn = control.querySelector('.btn-plus');
         const quantityInput = control.querySelector('input');
@@ -125,7 +144,7 @@ function QuantityControls() {
         cart[productId].qty = currentQty;
     }
 
-        renderCart();
+        refreshUI();
     });
 
     incrementBtn.addEventListener('click', () => {
@@ -136,18 +155,19 @@ function QuantityControls() {
         if (cart[productId]) {
             cart[productId].qty = currentQty;
         }
-        renderCart();
+        refreshUI();
     });
 
 // Prevent manual entry of invalid values
     quantityInput.addEventListener('input', () => {
         let value = parseInt(quantityInput.value);
         if (isNaN(value) || value < 1) {
+            value = 1;
             quantityInput.value = 1; // Reset to 1 if invalid 
         }
-        if (cart[productId]){ cart[productId].qty = value;}
-        
-        renderCart();
+        if (cart[productId]) { cart[productId].qty = value; }
+
+        refreshUI();
     });
 });
 

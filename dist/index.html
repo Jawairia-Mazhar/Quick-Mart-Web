@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Mart Web</title>
+    <title>Quick Mart Web</title>
+
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
@@ -37,7 +38,7 @@
       <li><a href="#contact" class="text-gray-700 hover:text-orange-500 hover:font-semibold">Contact</a></li>
     </ul>
         
-    <button id="cart-btn" class="hidden items-center justify-end md:flex">
+    <button id="cart-btn" class="hidden items-center justify-end md:flex" >
       <img src="/assets/basket-tPU2lzO8.png" alt="" class=" icon-amber w-7 h-7 cursor-pointer">
     </button>
   </nav>
@@ -48,7 +49,7 @@
     <div class="md:ml-13 space-y-4 mt-4">
       <h1 class="text-5xl text-orange-50 font-bold">Your trusted destination for everyday essentials.</h1>
             <p class="text-xl">Your one‑stop store for groceries, essentials, and everyday needs — fast, affordable, and always convenient.</p>
-            <button class="px-6 py-3 text-black bg-orange-50 hover:bg-orange-600 rounded-2xl transition duration-300 cursor-pointer">Shop Now</button>
+            <button class="px-6 py-3 text-black bg-orange-50 hover:bg-orange-600 rounded-2xl transition duration-300 cursor-pointer"><a href="#products" class="">Shop Now</a></button>
         </div>
         <img src="/assets/coverImage-D1n4vrpM.png" alt="cover page image" class="object-cover w-120 h-120 md:mt-14 md:mr-20">
     </main>
@@ -199,7 +200,11 @@ id="contact">
     </div>
   </div>
 </Footer>
-
-  
+<script type='module' src="JS/toggledNav.js"></script>
+<script type='module' src="JS/data.js"></script>
+<script type='module' src="JS/product.js"></script>
+<script type='module' src="JS/cart.js"></script>
+<script type='module' src="JS/category.js"></script>
+
 </body>
 </html>

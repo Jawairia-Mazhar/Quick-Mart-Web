@@ -51,7 +51,7 @@ img.blend {
     border-radius: 1rem;
     padding: 0.15rem;
 }
-.quantity-controls{
+.product-image .quantity-controls{
   position: absolute;
   left: 50%;
   transform: translateX(-50%); /* moving an element horizontally along the X-axis */

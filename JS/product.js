@@ -7,13 +7,12 @@ function createProductCard(product) {
             <img src="${product.image}" alt="${product.name}" class= "h-24 object-contain">
             <button 
                 class="add-to-cart w-26 cursor-pointer z-10 hidden bg-orange-400" data-id="${product.id}">
-                <span class=" text-sm font-medium" >Add to Cart</span>
+                <span class=" text-sm font-medium text-white" >Add to Cart</span>
             </button>
-
-            <div class="quantity-controls justify-between rounded-xl w-20 overflow-hidden border border-gray-300 " id="quantity-ctrl">
-                <button class="btn-plus"><img src="assets/plus.png" alt="Plus" class="w-5 h-5 cursor-pointer pt-0.5 bg-gray-200"/> </button>
+                <div class="quantity-controls justify-between rounded-xl w-20 overflow-hidden border border-gray-300 " id="quantity-ctrl">
+                <button class="btn-plus"><img src="assets/plus.png" alt="Plus" class="w-5 h-5 cursor-pointer pt-0.5 bg-orange-400"/> </button>
                 <input type="text" class="text-sm font-medium w-8 text-center items-center" data-id=${product.id} min="1" value="1">
-                <button class="btn-minus"><img src="assets/minus.png" alt="Minus" class="w-5 h-5 cursor-pointer pt-0.5 bg-gray-200"/></button>
+                <button class="btn-minus"><img src="assets/minus.png" alt="Minus" class="w-5 h-5 cursor-pointer pt-0.5 bg-orange-400"/></button>
             </div>
         </div>
         <span class="text-md font-medium">${product.name}</span>
