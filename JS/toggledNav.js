@@ -1,8 +1,17 @@
 /* product cards scrolling */
 document.addEventListener('DOMContentLoaded', () => {
-    renderProducts('#products-container', mostBoughtProducts);
-    QuantityControls();
-    renderCategories('#categories-container', featuredCategories);
+    const products = window.mostBoughtProducts || [];
+    const categories = window.featuredCategories || [];
+
+    if (typeof renderProducts === 'function') {
+        renderProducts('#products-container', products);
+    }
+    if (typeof QuantityControls === 'function') {
+        QuantityControls();
+    }
+    if (typeof renderCategories === 'function') {
+        renderCategories('#categories-container', categories);
+    }
 
     const track = document.querySelector('#products-container');
     if (!track) return;
