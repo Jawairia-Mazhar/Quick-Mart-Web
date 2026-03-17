@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const products = window.mostBoughtProducts || [];
     const categories = window.featuredCategories || [];
 
+    console.log('toggledNav DOMContentLoaded', {
+        hasRenderProducts: typeof renderProducts === 'function',
+        hasQuantityControls: typeof QuantityControls === 'function',
+        hasRenderCategories: typeof renderCategories === 'function',
+        productsLength: products.length,
+        categoriesLength: categories.length,
+    });
+
     if (typeof renderProducts === 'function') {
         renderProducts('#products-container', products);
     }
@@ -21,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const distance = Math.max(0, track.scrollWidth - viewport.clientWidth);
         track.style.setProperty('--scroll-end', `-${distance}px`);
     });
-})
+});
 
 const togBtn = document.getElementById('nav-toggle')
 const navMenu = document.getElementById('nav-menu')
