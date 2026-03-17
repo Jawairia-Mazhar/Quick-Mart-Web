@@ -51,5 +51,9 @@ function renderProducts(containerSelector, productsArray) {
         }
 
         container.appendChild(productCard);
-    }
-    );};
+    });
+}
+
+window.renderProducts = renderProducts;
+window.QuantityControls = window.QuantityControls || function() { };
+

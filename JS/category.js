@@ -14,5 +14,8 @@ function renderCategories(containerSelector, categoriesArray) {
     categoriesArray.forEach(categories => {
         const categoryCard = createCategoryCard(categories);
         container.appendChild(categoryCard);
-    })
+    });
 }
+
+window.renderCategories = renderCategories;
+

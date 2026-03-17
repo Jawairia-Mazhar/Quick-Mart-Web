@@ -1,4 +1,5 @@
-let cart = {};
+window.cart = window.cart || {};
+let cart = window.cart;
 let cartItems = null;
 
 const cartBtn = document.getElementById('cart-btn');
@@ -170,5 +171,11 @@ function QuantityControls() {
         refreshUI();
     });
 });
+}
 
-} 
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.renderCart = renderCart;
+window.QuantityControls = QuantityControls;
+window.refreshUI = refreshUI;
+ 
