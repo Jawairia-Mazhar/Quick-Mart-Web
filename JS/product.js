@@ -1,4 +1,4 @@
-import { mostBoughtProducts } from '../JS/data.js';
+// import { mostBoughtProducts } from '../JS/data.js';
 
 function createProductCard(product) {
     const productCard = document.createElement('div');
