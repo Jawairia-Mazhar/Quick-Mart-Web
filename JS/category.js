@@ -1,9 +1,9 @@
 function createCategoryCard(category) {
     const categoryCard = document.createElement('div');
-    categoryCard.className = "w-35 h-22 bg-yellow-100 place-items-center rounded-md";
+    categoryCard.className = "w-26 h-26 md:w-32 md:h-28 place-items-center rounded-xl flex flex-col items-center justify-center p-2";
     categoryCard.innerHTML = `
-    <span class="p-2 text-md ml-1">${category.name}</span>
-    <img src="${category.image}" alt="${category.name}" class="icon-amber w-16 h-16 p-0.5 object-contain rounded-tl-xl rounded-tr-xl">
+    <img src="${category.image}" alt="${category.name}" class="icon-amber w-12 h-12 md:w-16 md:h-16 object-contain rounded-tl-xl rounded-tr-xl mb-2">
+    <span class="text-sm font-medium">${category.name}</span>
     `;
     return categoryCard;
 }
