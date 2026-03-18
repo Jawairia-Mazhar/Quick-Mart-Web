@@ -1,3 +1,6 @@
+const plusIcon = new URL('../assets/plus.png', import.meta.url).href;
+const minusIcon = new URL('../assets/minus.png', import.meta.url).href;
+
 // import { mostBoughtProducts } from '../JS/data.js';
 
 function createProductCard(product) {
@@ -12,9 +15,9 @@ function createProductCard(product) {
                 <span class=" text-sm font-medium text-white" >Add to Cart</span>
             </button>
                 <div class="quantity-controls justify-between rounded-xl w-20 overflow-hidden border border-gray-300 " id="quantity-ctrl">
-                <button class="btn-plus"><img src="assets/plus.png" alt="Plus" class="w-5 h-5 cursor-pointer pt-0.5 bg-orange-400"/> </button>
-                <input type="text" class="text-sm font-medium w-8 text-center items-center" data-id=${product.id} min="1" value="1">
-                <button class="btn-minus"><img src="assets/minus.png" alt="Minus" class="w-5 h-5 cursor-pointer pt-0.5 bg-orange-400"/></button>
+                <button class="btn-plus w-7 h-7 bg-orange-400 text-white font-bold">+</button>
+                <input type="text" class="text-sm font-medium w-8 text-center border-l border-r border-gray-200" data-id=${product.id} min="1" value="1">
+                <button class="btn-minus w-7 h-7 bg-orange-400 text-white font-bold">-</button>
             </div>
         </div>
         <span class="text-md font-medium">${product.name}</span>

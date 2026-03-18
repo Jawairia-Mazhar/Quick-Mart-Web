@@ -1,3 +1,5 @@
+const closeIcon = new URL('../assets/close.png', import.meta.url).href;
+
 /* product cards scrolling */
 document.addEventListener('DOMContentLoaded', () => {
     const products = window.mostBoughtProducts || [];
@@ -44,7 +46,7 @@ togBtn.addEventListener('click', () => {
     'fixed right-0 top-0 z-[60] mt-12 bg-white w-64 h-[calc(100vh-4rem)] overflow-y-auto shadow-lg transition-transform transform ease-in-out duration-300';
     toggleMenu.innerHTML = `
         <button id="close-menu" class="toggle-btn flex flex-col md:hidden px-3 py-2 cursor-pointer" aria-label="Close menu" aria-expanded="true">
-            <img src="assets/close.png" alt="Close Menu" class=" w-5 h-5">
+            <span class="text-2xl font-bold">×</span>
         </button>
         <ul class="flex flex-col gap-4 p-4 ">
             <li><a href="#home-page" class="text-black hover:text-orange-500 hover:font-semibold">Home</a></li>

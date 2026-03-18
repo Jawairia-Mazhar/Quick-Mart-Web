@@ -2,6 +2,11 @@ window.cart = window.cart || {};
 let cart = window.cart;
 let cartItems = null;
 
+const plusIcon = new URL('../assets/plus.png', import.meta.url).href;
+const minusIcon = new URL('../assets/minus.png', import.meta.url).href;
+const trashIcon = new URL('../assets/trash.png', import.meta.url).href;
+const closeIcon = new URL('../assets/close.png', import.meta.url).href;
+
 const cartBtn = document.getElementById('cart-btn');
 
 cartBtn.addEventListener('click', () => {
@@ -9,7 +14,7 @@ cartBtn.addEventListener('click', () => {
     cartItems.className = 'fixed top-0 z-70 right-0 bg-white w-64 h-full overflow-y-auto'
     cartItems.innerHTML = `
     <button id="close-cart" class="flex flex-col px-3 py-2 cursor-pointer" aria-label="Close cart" aria-expanded="true">
-        <img src="assets/close.png" alt="Close cart" class=" w-5 h-5">
+        <span class="text-2xl font-bold">×</span>
     </button>
     <h2 class="p-4 text-xl font-semibold">Cart</h2>
     <div id="cart-items" class="p-4">  </div>
@@ -100,11 +105,11 @@ function renderCart() {
             <span class="ml-auto text-right w-full">Rs ${lineTotal.toFixed(1)}</span>
             <div class='flex justify-between items-center gap-2'>
                 <div class="quantity-controls justify-between w-20 overflow-hidden " id="quantity-ctrl">
-                    <button class="btn-plus "><img src="assets/plus.png" alt="Plus" class="w-5 h-5 cursor-pointer bg-orange-400 rounded-md pt-0.5"/> </button>
-                    <input type="text" class="text-sm font-medium w-8 text-center items-center border border-gray-300 rounded-md" data-id=${item.id} min="1" value="${qty}">
-                    <button class="btn-minus "><img src="assets/minus.png" alt="Minus" class="w-5 h-5 cursor-pointer bg-orange-400 rounded-md pt-0.5"/></button>
+                    <button class="btn-plus w-7 h-7 bg-orange-400 text-white font-bold">+</button>
+                    <input type="text" class="text-sm font-medium w-8 text-center border border-gray-300 rounded-md" data-id=${item.id} min="1" value="${qty}">
+                    <button class="btn-minus w-7 h-7 bg-orange-400 text-white font-bold">-</button>
                 </div>
-                <img src="assets/trash.png" alt="Remove Item" 
+                <img src="${trashIcon}" alt="Remove Item" 
                     class="w-4 h-4 cursor-pointer remove-item" 
                     data-id="${item.id}">
             </div>
@@ -167,7 +172,7 @@ function QuantityControls() {
             quantityInput.value = 1; // Reset to 1 if invalid 
         }
         if (cart[productId]) { cart[productId].qty = value; }
-
+        ``
         refreshUI();
     });
 });
