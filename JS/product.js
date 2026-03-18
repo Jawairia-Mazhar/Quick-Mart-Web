@@ -1,7 +1,7 @@
-const plusIcon = new URL('../assets/plus.png', import.meta.url).href;
-const minusIcon = new URL('../assets/minus.png', import.meta.url).href;
+const plusIcon = new URL('/dist/assets/plus.png', import.meta.url).href;
+const minusIcon = new URL('/dist/assets/minus.png', import.meta.url).href;
 
-// import { mostBoughtProducts } from '../JS/data.js';
+// import { mostBoughtProducts } from '/dist/JS/data.js';
 
 function createProductCard(product) {
     const productCard = document.createElement('div');

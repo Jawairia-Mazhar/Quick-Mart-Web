@@ -1,4 +1,4 @@
-const closeIcon = new URL('../assets/close.png', import.meta.url).href;
+const closeIcon = new URL('/dist/assets/close.png', import.meta.url).href;
 
 /* product cards scrolling */
 document.addEventListener('DOMContentLoaded', () => {

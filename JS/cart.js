@@ -2,10 +2,10 @@ window.cart = window.cart || {};
 let cart = window.cart;
 let cartItems = null;
 
-const plusIcon = new URL('../assets/plus.png', import.meta.url).href;
-const minusIcon = new URL('../assets/minus.png', import.meta.url).href;
-const trashIcon = new URL('../assets/trash.png', import.meta.url).href;
-const closeIcon = new URL('../assets/close.png', import.meta.url).href;
+const plusIcon = new URL('/dist/assets/plus.png', import.meta.url).href;
+const minusIcon = new URL('/dist/assets/minus.png', import.meta.url).href;
+const trashIcon = new URL('/dist/assets/trash.png', import.meta.url).href;
+const closeIcon = new URL('/dist/assets/close.png', import.meta.url).href;
 
 const cartBtn = document.getElementById('cart-btn');
 
