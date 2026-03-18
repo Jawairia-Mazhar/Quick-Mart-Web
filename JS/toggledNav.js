@@ -43,7 +43,7 @@ togBtn.addEventListener('click', () => {
     if (toggleMenu) { return; }
     toggleMenu = document.createElement('div');
     toggleMenu.className = 
-    'fixed right-0 top-0 z-[60] mt-12 bg-white w-64 h-[calc(100vh-4rem)] overflow-y-auto shadow-lg transition-transform transform ease-in-out duration-300';
+    'fixed inset-0 right-0 top-0 z-[60] mt-12 bg-white w-64 h-[calc(100vh-4rem)] overflow-y-auto shadow-lg transition-transform transform ease-in-out duration-300';
     toggleMenu.innerHTML = `
         <button id="close-menu" class="toggle-btn flex flex-col md:hidden px-3 py-2 cursor-pointer" aria-label="Close menu" aria-expanded="true">
             <span class="text-2xl font-bold">×</span>
