@@ -2,35 +2,33 @@ window.cart = window.cart || {};
 let cart = window.cart;
 let cartItems = null;
 
-const plusIcon = new URL('/dist/assets/plus.png', import.meta.url).href;
-const minusIcon = new URL('/dist/assets/minus.png', import.meta.url).href;
 const trashIcon = new URL('/dist/assets/trash.png', import.meta.url).href;
 const closeIcon = new URL('/dist/assets/close.png', import.meta.url).href;
 
-const cartBtn = document.getElementById('cart-btn');
-
-cartBtn.addEventListener('click', () => {
-    cartItems = document.createElement('div');
-    cartItems.className = 'fixed top-0 z-70 right-0 bg-white w-64 h-full overflow-y-auto'
-    cartItems.innerHTML = `
-    <button id="close-cart" class="flex flex-col px-3 py-2 cursor-pointer" aria-label="Close cart" aria-expanded="true">
-        <span class="text-2xl font-bold">×</span>
-    </button>
-    <h2 class="p-4 text-xl font-semibold">Cart</h2>
-    <div id="cart-items" class="p-4">  </div>
-    <div id="cart-total" class="p-4 text-xl font-medium absolute bottom-0">   </div>
-    `
-    document.body.appendChild(cartItems);
-      const close = cartItems.querySelector('#close-cart');
-    if (close && !close.dataset.bound) {
-    close.dataset.bound = '1';
-    close.addEventListener('click', () => {
-      cartItems.remove();
-      cartItems = null;
-      document.body.style.overflow = '';
-    });
-
-    renderCart();}
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.cart-btn')) {
+        cartItems = document.createElement('div');
+        cartItems.className = 'fixed top-0 z-70 right-0 bg-white w-64 h-full overflow-y-auto'
+        cartItems.innerHTML = `
+        <button id="close-cart" class="flex flex-col px-3 py-2 cursor-pointer" aria-label="Close cart" aria-expanded="true">
+            <span class="text-2xl font-bold">×</span>
+        </button>
+        <h2 class="p-4 text-xl font-semibold">Cart</h2>
+        <div id="cart-items" class="p-4">  </div>
+        <div id="cart-total" class="p-4 text-xl font-medium absolute bottom-0">   </div>
+        `
+        document.body.appendChild(cartItems);
+          const close = cartItems.querySelector('#close-cart');
+        if (close && !close.dataset.bound) {
+        close.dataset.bound = '1';
+        close.addEventListener('click', () => {
+          cartItems.remove();
+          cartItems = null;
+          document.body.style.overflow = '';
+        });
+    
+        renderCart();}
+    }
 })
 
 function refreshUI() {
@@ -42,9 +40,7 @@ function refreshUI() {
 function addToCart(productId){
     const product = mostBoughtProducts.find(p => p.id === Number(productId));
 
-    if (!product) {
-        return;
-    }
+    if (!product) { return; }
 
     if (!cart[product.id]) {
         cart[product.id] = { ...product, qty: 1 };
@@ -82,7 +78,7 @@ document.addEventListener('click', function(e){
 function renderCart() {
   const cartContainer = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
-//   const qtycontrols = document.querySelectorAll('.quantity-controls');
+// const qtycontrols = document.querySelectorAll('.quantity-controls');
 
   if (!cartContainer || !cartTotal) return; // prevents "cannot set properties of null"
 
@@ -105,9 +101,9 @@ function renderCart() {
             <span class="ml-auto text-right w-full">Rs ${lineTotal.toFixed(1)}</span>
             <div class='flex justify-between items-center gap-2'>
                 <div class="quantity-controls justify-between w-20 overflow-hidden " id="quantity-ctrl">
-                    <button class="btn-plus w-7 h-7 bg-orange-400 text-white font-bold">+</button>
+                    <button class="btn-plus bg-orange-400 text-white font-bold">+</button>
                     <input type="text" class="text-sm font-medium w-8 text-center border border-gray-300 rounded-md" data-id=${item.id} min="1" value="${qty}">
-                    <button class="btn-minus w-7 h-7 bg-orange-400 text-white font-bold">-</button>
+                    <button class="btn-minus bg-orange-400 text-white font-bold">-</button>
                 </div>
                 <img src="${trashIcon}" alt="Remove Item" 
                     class="w-4 h-4 cursor-pointer remove-item" 

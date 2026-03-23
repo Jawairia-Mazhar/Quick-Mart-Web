@@ -14,10 +14,14 @@ function createProductCard(product) {
                 class="add-to-cart w-26 cursor-pointer z-10 hidden bg-orange-400" data-id="${product.id}">
                 <span class=" text-sm font-medium text-white" >Add to Cart</span>
             </button>
-                <div class="quantity-controls justify-between rounded-xl w-20 overflow-hidden border border-gray-300 " id="quantity-ctrl">
-                <button class="btn-plus w-7 h-7 bg-orange-400 text-white font-bold">+</button>
-                <input type="text" class="text-sm font-medium w-8 text-center border-l border-r border-gray-200" data-id=${product.id} min="1" value="1">
-                <button class="btn-minus w-7 h-7 bg-orange-400 text-white font-bold">-</button>
+                <div class="quantity-controls justify-between rounded-xl w-18 overflow-hidden border border-gray-300 " id="quantity-ctrl">
+                <button class="w-6 h-5 bg-orange-400 text-white font-bold">
+                    <img src="${plusIcon}" alt="Plus" class="w-full h-full object-contain brightness-0 invert">
+                </button>
+                <input type="text" class="text-sm font-medium w-8 text-center border-l border-r border-gray-200" data-id=${product.id} min="1" value="1" focus:outline-none>
+                <button class="w-6 h-5 bg-orange-400 font-bold">
+                    <img src="${minusIcon}" alt="Minus" class="w-full h-full object-contain text-white brightness-0 invert">
+                </button>
             </div>
         </div>
         <span class="text-md font-medium">${product.name}</span>
