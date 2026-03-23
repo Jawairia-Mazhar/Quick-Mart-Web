@@ -63,8 +63,8 @@ img.blend {
     display: flex;
 }
 
-.btn-plus,
-.btn-minus {
+#cart-items .btn-plus,
+#cart-items .btn-minus {
   width: 1rem;
   height: 1rem;
   cursor: pointer;

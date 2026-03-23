@@ -15,11 +15,11 @@ function createProductCard(product) {
                 <span class=" text-sm font-medium text-white" >Add to Cart</span>
             </button>
                 <div class="quantity-controls justify-between rounded-xl w-18 overflow-hidden border border-gray-300 " id="quantity-ctrl">
-                <button class="w-6 h-5 bg-orange-400 text-white font-bold">
+                <button class="btn-plus w-6 h-5 bg-orange-400 text-white font-bold">
                     <img src="${plusIcon}" alt="Plus" class="w-full h-full object-contain brightness-0 invert">
                 </button>
                 <input type="text" class="text-sm font-medium w-8 text-center border-l border-r border-gray-200" data-id=${product.id} min="1" value="1" focus:outline-none>
-                <button class="w-6 h-5 bg-orange-400 font-bold">
+                <button class="btn-minus w-6 h-5 bg-orange-400 font-bold">
                     <img src="${minusIcon}" alt="Minus" class="w-full h-full object-contain text-white brightness-0 invert">
                 </button>
             </div>
