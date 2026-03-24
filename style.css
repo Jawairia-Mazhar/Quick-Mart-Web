@@ -44,17 +44,19 @@ img.blend {
 .product-image { position: relative; }
 
 /* Show the hidden-box when hovering over the trigger div */
-.trigger:hover .add-to-cart {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 2px;
-    border-radius: 1rem;
-    padding: 0.15rem;
+@media (min-width: 768px) {
+    .trigger:hover .desktop-add-btn {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 2px;
+        border-radius: 1rem;
+        padding: 0.15rem;
+    }
 }
 .product-image .quantity-controls{
   position: absolute;

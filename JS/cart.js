@@ -27,7 +27,7 @@ document.addEventListener('click', function(e) {
           document.body.style.overflow = '';
         });
     
-        renderCart();}
+        renderCart(); }
     }
 })
 
@@ -78,7 +78,6 @@ document.addEventListener('click', function(e){
 function renderCart() {
   const cartContainer = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
-// const qtycontrols = document.querySelectorAll('.quantity-controls');
 
   if (!cartContainer || !cartTotal) return; // prevents "cannot set properties of null"
 

@@ -11,9 +11,15 @@ function createProductCard(product) {
         <div class="product-image w-full md:h-30 bg-white rounded-2xl grid items-center justify-center">
             <img src="${product.image}" alt="${product.name}" class= "h-28 object-contain">
             <button 
-                class="add-to-cart w-26 cursor-pointer z-10 hidden bg-orange-400" data-id="${product.id}">
+                class="add-to-cart desktop-add-btn w-26 cursor-pointer z-10 hidden bg-orange-400" data-id="${product.id}">
                 <span class=" text-sm font-medium text-white" >Add to Cart</span>
             </button>
+
+            <button data-id="${product.id}"
+            class="add-to-cart md:hidden absolute z-10 bottom-1 right-1 bg-orange-400 p-1 rounded-full">
+                <img src="/dist/assets/basket.png" alt="md:hidden" class=" w-5 h-5 cursor-pointer filter brightness-0 invert">
+            </button>
+
                 <div class="quantity-controls justify-between rounded-xl w-18 overflow-hidden border border-gray-300 " id="quantity-ctrl">
                 <button class="btn-plus w-6 h-5 bg-orange-400 text-white font-bold">
                     <img src="${plusIcon}" alt="Plus" class="w-full h-full object-contain brightness-0 invert">
@@ -44,16 +50,20 @@ function renderProducts(containerSelector, productsArray) {
         const productCard = createProductCard(product);
 
         const quantityControls = productCard.querySelector('.quantity-controls');
-        const addCartBtn = productCard.querySelector('.add-to-cart');
+        const addCartBtns = productCard.querySelectorAll('.add-to-cart');
     
         if (cart[product.id]) {
             const qty = cart[product.id].qty;
-            addCartBtn.style.display = 'none';
+            addCartBtns.forEach(btn => {
+                btn.style.display = 'none';
+            });
             quantityControls.classList.remove('hidden');
             quantityControls.style.display = 'flex';
             quantityControls.querySelector('input').value = qty;
         } else {
-            addCartBtn.style.display = ''; // let CSS hover control it
+            addCartBtns.forEach(btn => {
+                btn.style.display = ''; // let CSS hover control it
+            });
             quantityControls.classList.add('hidden');
         }
 
