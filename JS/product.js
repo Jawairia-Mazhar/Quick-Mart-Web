@@ -1,5 +1,6 @@
 const plusIcon = new URL('/dist/assets/plus.png', import.meta.url).href;
 const minusIcon = new URL('/dist/assets/minus.png', import.meta.url).href;
+const cartBasket = new URL('/dist/assets/basket.png', import.meta.url).href;
 
 // import { mostBoughtProducts } from '/dist/JS/data.js';
 
@@ -17,7 +18,7 @@ function createProductCard(product) {
 
             <button data-id="${product.id}"
             class="add-to-cart md:hidden absolute z-10 bottom-1 right-1 bg-orange-400 p-1 rounded-full">
-                <img src="/dist/assets/basket.png" alt="md:hidden" class=" w-5 h-5 cursor-pointer filter brightness-0 invert">
+                <img src="${cartBasket}" alt="cart basket" class="w-5 h-5 cursor-pointer filter brightness-0 invert">
             </button>
 
                 <div class="quantity-controls justify-between rounded-xl w-18 overflow-hidden border border-gray-300 " id="quantity-ctrl">
