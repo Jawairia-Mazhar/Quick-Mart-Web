@@ -9,7 +9,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="h-full m-0 overflow-x-hidden">
   <nav class="grid grid-cols-[1fr_auto] items-center md:p-4 bg-white shadow-[#b00020] shadow-md md:auto-cols-auto md:grid-cols-[1fr_auto_1fr] sticky top-0 z-50">
     <img src="/dist/assets/QuickMartIcon.png" alt="Quick Mart Logo" class="w-30 md:w-38 h-12 md:h-16">
 
@@ -82,9 +82,11 @@
     </section>
 
 <!-- Best Selling Products section  -->
-    <section id="products" class="scroll-mt-24 overflow-hidden">
-        <h3 class="text-xl font-semibold text-gray-700 p-2">Best Selling Products</h3>
-        <div id="products-container" class="infinite-scroll-track flex gap-4 p-2 md:grid md:grid-cols-6 md:justify-center md:p-5 gap-x-6 md:gap-12">
+    <section id="products" class="scroll-mt-24 ">
+        <h3 class="text-xl font-semibold text-gray-700 p-2">Best Selling Products</h3> 
+        <div class="overflow-y-auto md:overflow-visible">
+          <div id="products-container" class="flex gap-y-4 p-2 md:grid md:grid-cols-6 md:justify-center md:p-5 gap-x-6 md:gap-12">
+          </div>
         </div>
     </section>
 

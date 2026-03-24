@@ -6,10 +6,10 @@ const minusIcon = new URL('/dist/assets/minus.png', import.meta.url).href;
 function createProductCard(product) {
     const productCard = document.createElement('div');
 
-    productCard.className = 'trigger w-50 h-53 rounded-2xl flex flex-col bg-amber-100 gap-1 items-left p-2 hover:shadow-md shadow-orange-400 transition duration-300 text-center rounded-bl-4xl rounded-br-4xl';
+    productCard.className = 'trigger w-50 h-53 flex-shrink-0 rounded-2xl flex flex-col bg-amber-100 gap-1 items-left p-2 hover:shadow-md shadow-orange-400 transition duration-300 text-center rounded-bl-4xl rounded-br-4xl';
     productCard.innerHTML = `
         <div class="product-image w-full md:h-30 bg-white rounded-2xl grid items-center justify-center">
-            <img src="${product.image}" alt="${product.name}" class= "h-24 object-contain">
+            <img src="${product.image}" alt="${product.name}" class= "h-28 object-contain">
             <button 
                 class="add-to-cart w-26 cursor-pointer z-10 hidden bg-orange-400" data-id="${product.id}">
                 <span class=" text-sm font-medium text-white" >Add to Cart</span>
@@ -59,6 +59,8 @@ function renderProducts(containerSelector, productsArray) {
 
         container.appendChild(productCard);
     });
+        // Duplicate for infinite loop
+    // container.innerHTML += container.innerHTML;
 }
 
 window.renderProducts = renderProducts;
